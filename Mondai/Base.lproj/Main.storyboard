@@ -32,7 +32,14 @@
                             <outlet property="delegate" destination="P4R-Ru-OOS" id="jSL-6d-s8B"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Mondai" id="zAh-Lm-be7"/>
+                    <navigationItem key="navigationItem" title="Mondai" id="zAh-Lm-be7">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ePr-wV-r2e">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="addButtonPressed:" destination="P4R-Ru-OOS" id="dkt-UH-xEm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hxU-67-kbU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
