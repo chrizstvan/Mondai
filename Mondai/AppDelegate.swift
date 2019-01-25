@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //print("didFinishLaunchingWithOption")
         
         // this line of code below is to prove that your data is saving somewhere
-        print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
+        //print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
         
         return true
     }

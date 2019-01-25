@@ -13,29 +13,26 @@ class TodoListViewController: UITableViewController
     
     var itemArray = [Item]()
     
-    let defaults = UserDefaults()
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
+    
+    //<this singleton is not used anymore because data too large>
+    //let defaults = UserDefaults()
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let newItem = Item()
-        newItem.title = "Buy Omellete"
-        itemArray.append(newItem)
         
-        let newItem1 = Item()
-        newItem1.title = "Cut the grass"
-        itemArray.append(newItem1)
+        print(dataFilePath)
         
-        let newItem3 = Item()
-        newItem3.title = "Save the lady"
-        itemArray.append(newItem3)
+        //<Load item by user defaulf>
+//        if let items = defaults.array(forKey: "ToDoListArray") as? [Item]{
+//            itemArray = items
+//        }
         
-        if let items = defaults.array(forKey: "ToDoListArray") as? [Item]{
-            itemArray = items
-        }
-        
+        //<Load item using data file Path>
+        loadItem()
         
     }
     
@@ -67,8 +64,7 @@ class TodoListViewController: UITableViewController
         
         itemArray[indexPath.row].done = !itemArray[indexPath.row].done
         
-        // this func for updating data
-        tableView.reloadData()
+        saveItem()
         
         //UI animation
         tableView.deselectRow(at: indexPath, animated: true)
@@ -91,9 +87,11 @@ class TodoListViewController: UITableViewController
             self.itemArray.append(newItem)
             
             // saving data using persistant data
-            self.defaults.set(self.itemArray, forKey: "ToDoListArray")
+            //self.defaults.set(self.itemArray, forKey: "ToDoListArray") <this not using anymore>
             
-            self.tableView.reloadData()
+            // saving data is a method now! come look and see
+            self.saveItem()
+            
         }
         
         alert.addTextField { (alertTextField) in
@@ -104,6 +102,41 @@ class TodoListViewController: UITableViewController
         alert.addAction(action)
         
         present(alert, animated: true, completion: nil)
+    }
+    
+    func saveItem()
+    {
+        //saving data with new way
+        let encoder = PropertyListEncoder()
+        
+        do
+        {
+            let data = try encoder.encode(self.itemArray)
+            try data.write(to: self.dataFilePath!)
+        }
+        catch
+        {
+            print("Error encoding itemArray : \n(error)")
+        }
+        
+        self.tableView.reloadData()
+    }
+    
+    func loadItem()
+    {
+        if let data = try? Data(contentsOf: dataFilePath!)
+        {
+            let decoder = PropertyListDecoder()
+            
+            do
+            {
+                itemArray = try decoder.decode([Item].self, from: data)
+            }
+            catch
+            {
+                print("Error ecode item array, \n(error)")
+            }
+        }
     }
     
 }
