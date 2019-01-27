@@ -14,9 +14,13 @@
 		BD76BA1F21F975BF00C08E9E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD76BA1D21F975BF00C08E9E /* LaunchScreen.storyboard */; };
 		BD7F298E21FC687B003AFD43 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F298D21FC687B003AFD43 /* CategoryViewController.swift */; };
 		BDD5C8AD21FB43C200EEC10C /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BDD5C8AB21FB43C200EEC10C /* DataModel.xcdatamodeld */; };
+		FF652E1A81DFCD3B2612CB52 /* Pods_Mondai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4318773EF7A64D2F61D5E7D4 /* Pods_Mondai.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		379A4D8D6D15DD949DA23223 /* Pods-Mondai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mondai.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mondai/Pods-Mondai.debug.xcconfig"; sourceTree = "<group>"; };
+		4318773EF7A64D2F61D5E7D4 /* Pods_Mondai.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mondai.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2E24E19DF5E98F7AED34F55 /* Pods-Mondai.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mondai.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mondai/Pods-Mondai.release.xcconfig"; sourceTree = "<group>"; };
 		BD76BA1121F975BD00C08E9E /* Mondai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mondai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD76BA1421F975BD00C08E9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD76BA1621F975BD00C08E9E /* TodoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewController.swift; sourceTree = "<group>"; };
@@ -33,17 +37,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF652E1A81DFCD3B2612CB52 /* Pods_Mondai.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7D7E51B54855BDF35D30D363 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				379A4D8D6D15DD949DA23223 /* Pods-Mondai.debug.xcconfig */,
+				B2E24E19DF5E98F7AED34F55 /* Pods-Mondai.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		BD76BA0821F975BD00C08E9E = {
 			isa = PBXGroup;
 			children = (
 				BD76BA1321F975BD00C08E9E /* Mondai */,
 				BD76BA1221F975BD00C08E9E /* Products */,
+				7D7E51B54855BDF35D30D363 /* Pods */,
+				F5A7DDA99B8FD9ECE4518421 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,6 +118,14 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F5A7DDA99B8FD9ECE4518421 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4318773EF7A64D2F61D5E7D4 /* Pods_Mondai.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -109,9 +133,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BD76BA2321F975BF00C08E9E /* Build configuration list for PBXNativeTarget "Mondai" */;
 			buildPhases = (
+				A896B2ED9CEDEB84AF930D10 /* [CP] Check Pods Manifest.lock */,
 				BD76BA0D21F975BD00C08E9E /* Sources */,
 				BD76BA0E21F975BD00C08E9E /* Frameworks */,
 				BD76BA0F21F975BD00C08E9E /* Resources */,
+				35DC32EA7C9567294026C98B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -167,6 +193,47 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		35DC32EA7C9567294026C98B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Mondai/Pods-Mondai-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mondai/Pods-Mondai-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A896B2ED9CEDEB84AF930D10 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mondai-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BD76BA0D21F975BD00C08E9E /* Sources */ = {
@@ -320,6 +387,7 @@
 		};
 		BD76BA2421F975BF00C08E9E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 379A4D8D6D15DD949DA23223 /* Pods-Mondai.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -339,6 +407,7 @@
 		};
 		BD76BA2521F975BF00C08E9E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B2E24E19DF5E98F7AED34F55 /* Pods-Mondai.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
