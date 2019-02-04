@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD130C772205B07A007F3E19 /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD130C762205B07A007F3E19 /* SwipeTableViewController.swift */; };
 		BD76BA1521F975BD00C08E9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76BA1421F975BD00C08E9E /* AppDelegate.swift */; };
 		BD76BA1721F975BD00C08E9E /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76BA1621F975BD00C08E9E /* TodoListViewController.swift */; };
 		BD76BA1A21F975BD00C08E9E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD76BA1821F975BD00C08E9E /* Main.storyboard */; };
 		BD76BA1C21F975BF00C08E9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD76BA1B21F975BF00C08E9E /* Assets.xcassets */; };
 		BD76BA1F21F975BF00C08E9E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD76BA1D21F975BF00C08E9E /* LaunchScreen.storyboard */; };
 		BD7F298E21FC687B003AFD43 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F298D21FC687B003AFD43 /* CategoryViewController.swift */; };
+		BD873E4B21FDF1BD00FD33F6 /* Item_Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD873E4A21FDF1BD00FD33F6 /* Item_Realm.swift */; };
+		BD873E4D21FDF21A00FD33F6 /* Category_Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD873E4C21FDF21A00FD33F6 /* Category_Realm.swift */; };
 		BDD5C8AD21FB43C200EEC10C /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BDD5C8AB21FB43C200EEC10C /* DataModel.xcdatamodeld */; };
 		FF652E1A81DFCD3B2612CB52 /* Pods_Mondai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4318773EF7A64D2F61D5E7D4 /* Pods_Mondai.framework */; };
 /* End PBXBuildFile section */
@@ -21,6 +24,7 @@
 		379A4D8D6D15DD949DA23223 /* Pods-Mondai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mondai.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mondai/Pods-Mondai.debug.xcconfig"; sourceTree = "<group>"; };
 		4318773EF7A64D2F61D5E7D4 /* Pods_Mondai.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mondai.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2E24E19DF5E98F7AED34F55 /* Pods-Mondai.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mondai.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mondai/Pods-Mondai.release.xcconfig"; sourceTree = "<group>"; };
+		BD130C762205B07A007F3E19 /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
 		BD76BA1121F975BD00C08E9E /* Mondai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mondai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD76BA1421F975BD00C08E9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD76BA1621F975BD00C08E9E /* TodoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewController.swift; sourceTree = "<group>"; };
@@ -29,6 +33,8 @@
 		BD76BA1E21F975BF00C08E9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD76BA2021F975BF00C08E9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD7F298D21FC687B003AFD43 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		BD873E4A21FDF1BD00FD33F6 /* Item_Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item_Realm.swift; sourceTree = "<group>"; };
+		BD873E4C21FDF21A00FD33F6 /* Category_Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category_Realm.swift; sourceTree = "<group>"; };
 		BDD5C8AC21FB43C200EEC10C /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,6 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				BDD5C8AB21FB43C200EEC10C /* DataModel.xcdatamodeld */,
+				BD873E4A21FDF1BD00FD33F6 /* Item_Realm.swift */,
+				BD873E4C21FDF21A00FD33F6 /* Category_Realm.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -96,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				BD7F298D21FC687B003AFD43 /* CategoryViewController.swift */,
+				BD130C762205B07A007F3E19 /* SwipeTableViewController.swift */,
 				BD76BA1621F975BD00C08E9E /* TodoListViewController.swift */,
 			);
 			path = Controllers;
@@ -202,13 +211,17 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Mondai/Pods-Mondai-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -241,7 +254,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD7F298E21FC687B003AFD43 /* CategoryViewController.swift in Sources */,
+				BD873E4D21FDF21A00FD33F6 /* Category_Realm.swift in Sources */,
 				BD76BA1721F975BD00C08E9E /* TodoListViewController.swift in Sources */,
+				BD130C772205B07A007F3E19 /* SwipeTableViewController.swift in Sources */,
+				BD873E4B21FDF1BD00FD33F6 /* Item_Realm.swift in Sources */,
 				BDD5C8AD21FB43C200EEC10C /* DataModel.xcdatamodeld in Sources */,
 				BD76BA1521F975BD00C08E9E /* AppDelegate.swift in Sources */,
 			);

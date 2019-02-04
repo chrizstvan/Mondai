@@ -8,10 +8,19 @@
 
 import UIKit
 import CoreData
+import RealmSwift
+import ChameleonFramework
 
-class CategoryViewController: UITableViewController {
+class CategoryViewController: SwipeTableViewController {
     
-    var categoryArray = [Category]()
+    //using realm
+    let realm = try! Realm()
+    
+    //using core data
+    //var categoryArray = [Category]()
+    
+    //using realm
+    var categoryArray: Results<Category_Realm>!
     
     let contex = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
@@ -19,21 +28,32 @@ class CategoryViewController: UITableViewController {
         super.viewDidLoad()
 
         loadCategory()
+        
+        tableView.rowHeight = 80.0
+        tableView.separatorStyle = .none
     }
 
     //MARK: - Tableview Datasource Methods
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categoryArray.count
+        return categoryArray?.count ?? 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
         
-        let category = categoryArray[indexPath.row]
+        //let category = categoryArray[indexPath.row]
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
-        cell.textLabel?.text = category.name
+        if let category = categoryArray?[indexPath.row]{
+            cell.textLabel?.text = category.name
+            cell.backgroundColor = UIColor(hexString: category.color)
+
+            cell.textLabel?.textColor = ContrastColorOf(UIColor(hexString: category.color)!, returnFlat: true)
+        } else {
+            cell.textLabel?.text = "No Caegories Added yet"
+            cell.backgroundColor = UIColor(hexString: "FFFFFF")
+        }
         
         return cell
     }
@@ -53,7 +73,7 @@ class CategoryViewController: UITableViewController {
             
             if let indexPath = tableView.indexPathForSelectedRow{
                 
-                destinationVC.selectedCategory = categoryArray[indexPath.row]
+                destinationVC.selectedCategory = categoryArray?[indexPath.row]
             }
         }
     }
@@ -68,13 +88,16 @@ class CategoryViewController: UITableViewController {
         
         let action = UIAlertAction(title: "Add Category", style: .default) { (action) in
             
-            let newCategory = Category(context: self.contex)
-            newCategory.name = textField.text
+            
+            //let newCategory = Category(context: self.contex) //this is using core data
+            let newCategory = Category_Realm() //this is using realm
+            newCategory.name = textField.text!
+            newCategory.color = UIColor.randomFlat.hexValue()
             
             //increment row
-            self.categoryArray.append(newCategory)
+            //self.categoryArray.append(newCategory) // realm dont need this line because its auto update
             
-            self.saveCategory()
+            self.save(category: newCategory)
         }
         
         alert.addTextField { (alertTextField) in
@@ -88,11 +111,14 @@ class CategoryViewController: UITableViewController {
     
     //MARK: - Data Manipulation Methods
     
-    func saveCategory() {
+    func save(category: Category_Realm) {
         
         do
         {
-            try contex.save()
+            //try contex.save() //using core data
+            try realm.write {
+                realm.add(category)
+            }
         }
         catch
         {
@@ -102,20 +128,43 @@ class CategoryViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    func loadCategory(with request: NSFetchRequest<Category> = Category.fetchRequest())
+    func loadCategory()
     {
-        do
-        {
-            categoryArray = try contex.fetch(request)
-        }
-        catch
-        {
-            print("Error fetching data from contexr :: Category : \(error)")
-        }
+        //<This code below is when you use realm>
+        categoryArray = realm.objects(Category_Realm.self)
         
+        //<This code below is when you use core data>
+//        let request: NSFetchRequest<Category> = Category.fetchRequest()
+//
+//        do
+//        {
+//            categoryArray = try contex.fetch(request)
+//        }
+//        catch
+//        {
+//            print("Error fetching data from contexr :: Category : \(error)")
+//        }
+//
         self.tableView.reloadData()
     }
     
-    
+    //MARK: - Delete using swipe
+    override func updateModel(at indexPath: IndexPath) {
+        
+        if let categoryForDeletion = self.categoryArray?[indexPath.row]
+        {
+            do
+            {
+                try self.realm.write {
+                    self.realm.delete(categoryForDeletion)
+                }
+
+            } catch{
+                print("Error delering category \(error)")
+            }
+
+            //tableView.reloadData()
+        }
+    }
     
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // this line of code below is to prove that your data is saving somewhere
         //print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
+        
+        //<This is location of realm file>
+        print(Realm.Configuration.defaultConfiguration.fileURL)
+        
+        
+        do
+        {
+            let realm = try Realm()
+//            try realm.write {
+//                realm.add(data)
+//            }
+        }
+        catch
+        {
+            print("Error instaling new realm, \(error)")
+        }
+        
         
         return true
     }
