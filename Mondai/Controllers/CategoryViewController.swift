@@ -32,6 +32,7 @@ class CategoryViewController: SwipeTableViewController {
         tableView.rowHeight = 80.0
         tableView.separatorStyle = .none
     }
+    
 
     //MARK: - Tableview Datasource Methods
     

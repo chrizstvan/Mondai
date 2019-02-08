@@ -25,6 +25,8 @@ class TodoListViewController: SwipeTableViewController
         }
     }
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     //<use code below when you using codable and plist method
     //let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
     
@@ -50,6 +52,35 @@ class TodoListViewController: SwipeTableViewController
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if let colorHex = selectedCategory?.color {
+            
+            title = selectedCategory!.name
+            
+            updateNavBar(withHexCode: colorHex)
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        updateNavBar(withHexCode: "1D9BF6")
+    }
+    
+    //MARK: - Nav Bar Setup Method
+    func updateNavBar(withHexCode colorHexCode: String)
+    {
+        guard let navBar = navigationController?.navigationBar else {fatalError("Navigation Controller does not exist")}
+        
+        if let navBarColor = UIColor(hexString: colorHexCode) {
+            navBar.barTintColor = navBarColor
+            navBar.tintColor = ContrastColorOf(navBarColor, returnFlat: true)
+            searchBar.barTintColor = UIColor(hexString: colorHexCode)
+            // text title color to contras
+            navBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : ContrastColorOf(navBarColor, returnFlat: true)]
+        }
+    }
+    
     //MARK: - Tableview Datasource Methods
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -69,7 +100,7 @@ class TodoListViewController: SwipeTableViewController
             
             cell.accessoryType = item.done ? .checkmark : .none
             
-            if let color = FlatRedDark().darken(byPercentage: CGFloat(indexPath.row) / CGFloat(todoItems!.count))
+            if let color = UIColor(hexString: selectedCategory!.color)?.darken(byPercentage: CGFloat(indexPath.row) / CGFloat(todoItems!.count))
             {
                 cell.backgroundColor = color
                 cell.textLabel?.textColor = ContrastColorOf(color, returnFlat: true)
